@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-const datas = {}
+const data = {'r': 'y'}
 
 // Express to run server and routes
 const express = require('express');
@@ -36,11 +36,13 @@ app.listen(port, () => {
 
 // Initialize all route with a callback function
 app.get('/all', (req, res) => {
-    console.log('get all')
+    res.send(data)
+    console.log('Get data')
 })
 
 // Post Route
 app.post('/add', (req, res) => {
-    console.log('post data')
+    res.send(req.body)
+    console.log('Post data')
 })
   

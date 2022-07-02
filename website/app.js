@@ -9,7 +9,11 @@ let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 /* Function called by event listener */
 const onGenerateClicked = () => {
-    postData('/add')
+    postData('/add', {
+        temperature: 28,
+        date: newDate,
+        userResponse: ''
+    })
     .then(() => {
         getData()
     })

@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-const data = {'r': 'y'}
+const data = {}
 
 // Express to run server and routes
 const express = require('express');
@@ -42,7 +42,10 @@ app.get('/all', (req, res) => {
 
 // Post Route
 app.post('/add', (req, res) => {
-    res.send(req.body)
+    data['temperature'] = req.body.temperature
+    data['date'] = req.body.date
+    data['userResponse'] = req.body.userResponse
+    res.send(data)
     console.log('Post data')
 })
   

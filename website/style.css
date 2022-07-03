@@ -29,6 +29,14 @@ body{
     background: rgba(59, 74, 107, .4);
 }
 
+p {
+    color: #fff;
+}
+
+.hide {
+    display: none;
+}
+
 #entryHolder{
 
 }

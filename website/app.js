@@ -10,22 +10,28 @@ const KEY = '7f7da594e7943a81894f9523ee0c8411'
 /* Function called by event listener */
 const onGenerateClicked = () => {
     const zip = document.getElementById('zip').value
-    getLocationData(zip)
-    .then((locationData) => {
-        const weatherData = getWeatherData(locationData.lat, locationData.lon)
-        return weatherData
-    })
-    .then((weatherData) => {
-        const feelings = document.getElementById('feelings').value
-        postData('/add', {
-            temperature: weatherData.main.temp,
-            date: newDate,
-            userResponse: feelings
+    const erroElement = document.getElementById('zip-error')
+    if(zip.length === 0) {
+        erroElement.classList.remove('hide')
+    } else {
+        erroElement.classList.add('hide')
+        getLocationData(zip)
+        .then((locationData) => {
+            const weatherData = getWeatherData(locationData.lat, locationData.lon)
+            return weatherData
         })
-    })
-    .then(() => {
-        return getData()
-    })
+        .then((weatherData) => {
+            const feelings = document.getElementById('feelings').value
+            postData('/add', {
+                temperature: weatherData.main.temp,
+                date: newDate,
+                userResponse: feelings
+            })
+        })
+        .then(() => {
+            return getData()
+        })
+    }
 }
 
 /* Function to GET Location Data*/

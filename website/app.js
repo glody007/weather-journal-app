@@ -26,14 +26,6 @@ const onGenerateClicked = () => {
     .then(() => {
         return getData()
     })
-    .then((userData) => {
-        const dateElement = document.getElementById('date')
-        const tempElement = document.getElementById('temp')
-        const content = document.getElementById('content')
-        dateElement.innerHTML = 'Date: ' + userData.date
-        tempElement.innerHTML = 'Temperature: ' + userData.temperature + ' Degrees'
-        content.innerHTML = 'Content: ' + userData.userResponse
-    })
 }
 
 /* Function to GET Location Data*/
@@ -86,7 +78,12 @@ const getData = async () => {
     })
     try {
         const data = await response.json()
-        return data
+        const dateElement = document.getElementById('date')
+        const tempElement = document.getElementById('temp')
+        const content = document.getElementById('content')
+        dateElement.innerHTML = 'Date: ' + data.date
+        tempElement.innerHTML = 'Temperature: ' + data.temperature + ' Degrees'
+        content.innerHTML = 'Content: ' + data.userResponse
     } catch (error) {
         console.log(error.data)
     }

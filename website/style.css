@@ -20,6 +20,11 @@ body{
 
 }
 
+.feel {
+    display: flex;
+    flex-direction: column;
+}
+
 .entry{
     background: rgba(59, 74, 107, .4);
 }

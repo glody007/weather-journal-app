@@ -5,7 +5,7 @@ let d = new Date();
 let newDate = (d.getMonth() + 1)+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 // Personal API Key for OpenWeatherMap API
-const KEY = '7f7da594e7943a81894f9523ee0c8411'
+const KEY = ''
 
 /* Function called by event listener */
 const onGenerateClicked = () => {

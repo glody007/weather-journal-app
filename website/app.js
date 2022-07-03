@@ -31,7 +31,7 @@ const onGenerateClicked = () => {
         const tempElement = document.getElementById('temp')
         const content = document.getElementById('content')
         dateElement.innerHTML = 'Date: ' + userData.date
-        tempElement.innerHTML = 'Temperature: ' + userData.temperature
+        tempElement.innerHTML = 'Temperature: ' + userData.temperature + ' Degrees'
         content.innerHTML = 'Content: ' + userData.userResponse
     })
 }
@@ -49,7 +49,7 @@ const getLocationData = async (zip) => {
 
 /* Function to GET Weather Data*/
 const getWeatherData = async (lat, lon) => {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}`)
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${KEY}`)
     try {
         const weatherData = await response.json()
         return weatherData

@@ -9,16 +9,18 @@ const KEY = '7f7da594e7943a81894f9523ee0c8411'
 
 /* Function called by event listener */
 const onGenerateClicked = () => {
-    getLocationData()
+    const zip = document.getElementById('zip').value
+    getLocationData(zip)
     .then((locationData) => {
         const weatherData = getWeatherData(locationData.lat, locationData.lon)
         return weatherData
     })
     .then((weatherData) => {
+        const feelings = document.getElementById('feelings').value
         postData('/add', {
             temperature: weatherData.main.temp,
             date: newDate,
-            userResponse: 'datas'
+            userResponse: feelings
         })
     })
     .then(() => {
@@ -35,8 +37,8 @@ const onGenerateClicked = () => {
 }
 
 /* Function to GET Location Data*/
-const getLocationData = async () => {
-    const response = await fetch(`http://api.openweathermap.org/geo/1.0/zip?zip=E14,GB&appid=${KEY}`)
+const getLocationData = async (zip) => {
+    const response = await fetch(`http://api.openweathermap.org/geo/1.0/zip?zip=${zip}&appid=${KEY}`)
     try {
         const locationData = await response.json()
         return locationData

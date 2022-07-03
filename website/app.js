@@ -18,15 +18,19 @@ const onGenerateClicked = () => {
         postData('/add', {
             temperature: weatherData.main.temp,
             date: newDate,
-            userResponse: ''
+            userResponse: 'datas'
         })
     })
     .then(() => {
         return getData()
     })
     .then((userData) => {
-        // TO DO: Display data
-        console.log(userData)
+        const dateElement = document.getElementById('date')
+        const tempElement = document.getElementById('temp')
+        const content = document.getElementById('content')
+        dateElement.innerHTML = 'Date: ' + userData.date
+        tempElement.innerHTML = 'Temperature: ' + userData.temperature
+        content.innerHTML = 'Content: ' + userData.userResponse
     })
 }
 
